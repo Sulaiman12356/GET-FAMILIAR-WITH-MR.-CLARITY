@@ -95,12 +95,6 @@ export const Hero: React.FC<HeroProps> = ({
                   <ChevronDown className="w-4 h-4" />
                 </a>
               </div>
-
-              {/* Reassuring note */}
-              <p className="text-xs text-[#667085] flex items-center gap-1.5 pt-1">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#155EEF]" />
-                <span>No form. Just send your name and department on WhatsApp.</span>
-              </p>
             </div>
 
           </div>
