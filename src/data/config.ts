@@ -1,325 +1,232 @@
 import { SiteConfig } from '../types';
+import { DEFAULT_PREFILLED_MESSAGE, DEFAULT_WHATSAPP_NUMBER } from '../utils/whatsapp';
 
 export const initialConfig: SiteConfig = {
   name: "Onifade Sulaiman",
   nickname: "Mr. Clarity",
-  title: "Computer Science Student & Student Leader",
   brand: "The Auspicious Era",
-  tagline: "A New Chapter. A Lasting Legacy.",
-  alternativeTagline: "Better Students. Bigger Possibilities.",
-  institution: "Olabisi Onabanjo University (OOU)",
-  facultyOrDept: "Computer Science",
+  institution: "Olabisi Onabanjo University",
   
-  heroHeadline: "A New Chapter.",
-  heroHeadlineHighlight: "A Lasting Legacy.",
-  heroBio: "Onifade Sulaiman, popularly known as Mr. Clarity, is a Computer Science student, student leader, digital strategist and community builder focused on helping students discover opportunities, develop useful skills and create meaningful impact.",
+  whatsAppNumber: DEFAULT_WHATSAPP_NUMBER,
+  whatsAppDefaultMessage: DEFAULT_PREFILLED_MESSAGE,
+  personalWebsiteUrl: "", // Configurable URL
+
+  heroHeadlineTop: "A NEW CHAPTER.",
+  heroHeadlineHighlight: "A LASTING LEGACY.",
   
-  aboutIntro: "I am Onifade Sulaiman, popularly known as Mr. Clarity, a Computer Science student at Olabisi Onabanjo University with a strong interest in technology, digital innovation, entrepreneurship, leadership and student development.",
-  aboutBelief: "My journey has been shaped by one simple belief: when people have the right information, skills and opportunities, they can make better decisions and create better outcomes.",
-  aboutImpact: "Through leadership, digital projects, mentoring, technology and community initiatives, I have continued to look for practical ways to create value around me.",
+  heroBio1: "My name is Onifade Sulaiman, popularly known as Mr. Clarity. I am a Computer Science student, student leader, digital strategist and community builder passionate about helping students find clarity, discover opportunities and create meaningful progress.",
+  heroBio2: "The Auspicious Era represents a chapter of service, ideas and impact — built around what students can experience, access and achieve together.",
   
-  quote: "Clarity creates direction. Direction creates progress.",
-  quoteAuthor: "Onifade Sulaiman",
+  beyondNameSubtitle: "Before leadership comes identity. Before a position comes purpose.",
+  whoIsIntro: "Onifade Sulaiman, popularly known as Mr. Clarity, is a Computer Science student at Olabisi Onabanjo University whose journey has grown through academics, student representation, digital innovation, entrepreneurship, technology and service.",
+  whoIsPhilosophy: "The name \"Mr. Clarity\" comes from a simple idea: people make better decisions when they have better information and better understanding.",
   
-  personalWebsiteUrl: "", // Configurable URL variable
-  contactEmail: "onifade.clarity@gmail.com",
-  contactWhatsApp: "+2348000000000",
-  
-  socials: {
-    instagram: "https://instagram.com",
-    facebook: "https://facebook.com",
-    linkedin: "https://linkedin.com",
-    tiktok: "https://tiktok.com",
-    x: "https://x.com",
-    whatsapp: "https://wa.me/2348000000000",
-    youtube: ""
-  },
-  
-  roles: [
+  identityTags: [
     "Computer Science Student",
     "Student Leader",
     "Digital Strategist",
     "Technology Enthusiast",
-    "Community Builder",
-    "Mentor"
+    "Community Builder"
   ],
-  
-  timeline: [
-    {
-      id: "step-1",
-      step: "01",
-      title: "The Student",
-      role: "Academic Foundation",
-      description: "Computer Science student at Olabisi Onabanjo University, building strong fundamentals in software concepts, analytical problem solving, and technological innovation.",
-      highlights: ["Department of Computer Science", "Passionate about tech & practical solutions"]
-    },
-    {
-      id: "step-2",
-      step: "02",
-      title: "The Representative",
-      role: "Grassroots Advocacy",
-      description: "Started serving students through class and departmental representation, bridging the gap between student concerns and departmental administration.",
-      highlights: ["Class advocacy", "Active student liaison", "Open feedback channels"]
-    },
-    {
-      id: "step-3",
-      step: "03",
-      title: "The General Secretary",
-      role: "Executive Administration",
-      description: "Served as General Secretary within student leadership, gaining hands-on experience in administration, communication, coordination and student affairs.",
-      highlights: ["Administrative efficiency", "Inter-department coordination", "Transparent reporting"]
-    },
-    {
-      id: "step-4",
-      step: "04",
-      title: "The Builder",
-      role: "Innovation & Initiatives",
-      description: "Started working on digital projects, student-focused platforms, technology ideas and community initiatives designed to solve campus pain points.",
-      highlights: ["Digital tools for students", "Peer learning spaces", "Resource repositories"]
-    },
-    {
-      id: "step-5",
-      step: "05",
-      title: "The Clarity Journey",
-      role: "Personal Identity",
-      description: "Developed a personal identity around simplifying confusing information and helping students understand academics, opportunities, skills and digital possibilities.",
-      highlights: ["'Mr. Clarity' philosophy", "Demystifying tech & academic paths", "Empowering peers"]
-    },
-    {
-      id: "step-6",
-      step: "06",
-      title: "The Next Chapter",
-      role: "Forward Vision",
-      description: "Final-year student preparing to transition from campus leadership into professional, entrepreneurial and technology-driven work while cementing a lasting legacy.",
-      highlights: ["The Auspicious Era movement", "Sustainable student systems", "Future-ready leadership"]
-    }
+
+  storyHeadline: "I DIDN'T START WITH A TITLE. I STARTED WITH A DESIRE TO HELP.",
+  storyQuote: "A position ends. A legacy can continue.",
+  storyParagraphs: [
+    "My journey through university has not been a straight line.",
+    "I have had to learn, adapt, take responsibility, make mistakes, serve people, build skills and continuously figure out what direction I want my life to take.",
+    "Along the way, leadership became one of the ways I could contribute to the people around me.",
+    "But leadership also taught me something important: a position is temporary. What you build, what you teach, the people you help and the opportunities you create can last much longer."
   ],
-  
+
   leadershipPillars: [
     {
-      id: "representation",
-      title: "REPRESENTATION",
-      focus: "Student Voice",
-      description: "Listening to students and communicating their concerns with clarity, empathy, and steadfast dedication.",
-      icon: "Megaphone",
-      metrics: "Responsive feedback"
+      id: "class-rep",
+      title: "CLASS REPRESENTATION",
+      subtitle: "Grassroots Student Voice",
+      description: "Experience representing students, communicating information and helping coordinate student concerns directly with academic staff and faculty.",
+      icon: "Users",
+      highlights: ["Open student communication", "Course coordination support", "Empathetic problem solving"]
     },
     {
-      id: "administration",
-      title: "ADMINISTRATION",
-      focus: "Operational Excellence",
-      description: "Learning how to coordinate people, information and responsibilities efficiently to ensure smooth execution.",
-      icon: "FileCheck",
-      metrics: "Systematic coordination"
+      id: "gen-sec",
+      title: "GENERAL SECRETARY",
+      subtitle: "Executive Administration",
+      description: "Experience in administration, communication, coordination, documentation and student leadership at the departmental and faculty level.",
+      icon: "FileText",
+      highlights: ["Transparent student reporting", "Inter-department coordination", "Operational efficiency"]
     },
     {
-      id: "communication",
-      title: "COMMUNICATION",
-      focus: "Transparent Updates",
-      description: "Helping students understand important information clearly, cutting through confusion and procedural bottlenecks.",
-      icon: "MessageSquareShare",
-      metrics: "Clarity-first approach"
-    },
-    {
-      id: "service",
-      title: "SERVICE",
-      focus: "Action & Impact",
-      description: "Creating practical value rather than simply holding a position. Grounded in empathy, accessibility, and follow-through.",
+      id: "community-building",
+      title: "COMMUNITY BUILDING",
+      subtitle: "Peer Empowerment",
+      description: "Working with students, sharing useful information and creating initiatives designed around student needs, study circles, and mutual growth.",
       icon: "HeartHandshake",
-      metrics: "Tangible contribution"
+      highlights: ["Academic peer circles", "Mentorship sessions", "Accessible support channels"]
+    },
+    {
+      id: "digital-tech",
+      title: "DIGITAL & TECHNOLOGY PROJECTS",
+      subtitle: "Practical Innovation",
+      description: "Building digital ideas and platforms aimed at improving access to information, opportunities and services for university students.",
+      icon: "Laptop",
+      highlights: ["Student digital resource hubs", "Skill-sharing sessions", "Tech opportunity alerts"]
     }
   ],
-  
-  legacyTenureIntro: "The Legacy Tenure represents the kind of student-focused impact I believe leadership should pursue: practical initiatives, better access to opportunities, stronger communication and a university experience where students can find useful support.",
+
+  turningPointHeadline: "LEADERSHIP SHOULD NOT END WITH A POSITION.",
+  turningPointParagraphs: [
+    "The more I interacted with students, the more I understood that many challenges are not caused by a lack of capable students.",
+    "Sometimes, students simply lack access to information, opportunities, support, connections and platforms where their ideas can be heard.",
+    "That realization shaped the idea behind The Legacy Tenure."
+  ],
+
+  legacyTenureHeadline: "MORE THAN A TITLE. SOMETHING STUDENTS CAN ACTUALLY BENEFIT FROM.",
+  legacyTenureIntro: "The Legacy Tenure represents a vision for practical student-focused initiatives that can improve access to information, opportunities, skills, technology, welfare support and stronger student communities.",
   
   legacyInitiatives: [
     {
-      id: "academic-excellence",
+      id: "01",
       number: "01",
-      title: "ACADEMIC EXCELLENCE",
-      focus: "Learning & Resource Access",
-      summary: "Helping students access useful academic information, resources, peer support and learning opportunities.",
-      initiatives: [
-        "Academic resource sharing & past question repositories",
-        "Peer learning communities and tutorial circles",
-        "Exam preparation support and syllabus guidance",
-        "Information about academic opportunities & scholarships",
-        "Better, timely communication of important academic updates"
+      title: "ACADEMIC SUPPORT",
+      summary: "Making useful academic information, resources, peer support and learning opportunities easier for students to discover.",
+      areas: [
+        "Academic resources & repositories",
+        "Peer learning circles",
+        "Exam preparation support",
+        "Academic opportunities & scholarships",
+        "Useful, timely academic information"
       ],
-      ctaText: "Explore Academic Initiatives",
-      icon: "GraduationCap",
-      badge: "Core Foundation"
+      icon: "GraduationCap"
     },
     {
-      id: "student-welfare",
+      id: "02",
       number: "02",
       title: "STUDENT WELFARE",
-      focus: "Support & Responsive Channels",
-      summary: "Creating stronger channels for students to communicate challenges and access available support.",
-      initiatives: [
-        "Structured student feedback channels and listening clinics",
-        "Welfare information, campus health & safety guidance",
-        "Mental well-being & academic stress relief awareness",
-        "Active student community engagement & emergency support aid"
+      summary: "Creating stronger channels for students to communicate concerns, discover available support and feel better connected to their student community.",
+      areas: [
+        "Student feedback channels",
+        "Welfare awareness & outreach",
+        "Campus support channels",
+        "Active student engagement"
       ],
-      ctaText: "Explore Welfare Initiatives",
-      icon: "HeartPulse",
-      badge: "Student Care"
+      icon: "Heart"
     },
     {
-      id: "technology-innovation",
+      id: "03",
       number: "03",
       title: "TECHNOLOGY & INNOVATION",
-      focus: "Digital Tools & Skill Building",
-      summary: "Encouraging students to use technology to solve practical problems and excel in the global digital economy.",
-      initiatives: [
-        "Hands-on digital skills sessions (coding, design, product)",
-        "Technology workshops & hands-on toolkits",
-        "Student innovation hackathons & showcase projects",
-        "AI awareness, prompt literacy, and responsible tool usage",
-        "Digital work opportunities & remote freelance awareness"
+      summary: "Encouraging students to use technology, AI and digital tools to solve real problems and create new possibilities.",
+      areas: [
+        "Practical digital skills",
+        "AI awareness & responsible use",
+        "Technology workshops",
+        "Student innovation projects",
+        "Digital work opportunities"
       ],
-      ctaText: "Explore Innovation",
-      icon: "Cpu",
-      badge: "Tech Driven"
+      icon: "Cpu"
     },
     {
-      id: "skills-opportunities",
+      id: "04",
       number: "04",
       title: "SKILLS & OPPORTUNITIES",
-      focus: "Career & External Growth",
-      summary: "Connecting students with opportunities beyond lectures to prepare them for life after campus.",
-      initiatives: [
-        "Curated internship opportunities & application guidelines",
-        "National and international scholarship alerts",
-        "Case competitions & hackathon team matching",
-        "Practical professional training programmes",
-        "Student entrepreneurship grants & business support",
-        "Career development resources & resume writing sessions"
+      summary: "Helping students discover opportunities beyond the classroom and develop skills that can become useful beyond university.",
+      areas: [
+        "Internship alerts & prep",
+        "Scholarship opportunities",
+        "Competitions & hackathons",
+        "Vocational & tech training",
+        "Student entrepreneurship",
+        "Career development guides"
       ],
-      ctaText: "Explore Opportunities",
-      icon: "Briefcase",
-      badge: "Career Ready"
+      icon: "Briefcase"
     },
     {
-      id: "community-unity",
+      id: "05",
       number: "05",
       title: "COMMUNITY & UNITY",
-      focus: "Inter-Department Connection",
-      summary: "Building stronger connections between students across departments, faculties, and academic levels.",
-      initiatives: [
-        "Cross-departmental student networking and forums",
-        "Interdepartmental project collaboration hubs",
-        "Community impact projects & volunteer drives",
-        "Student talent, sports, and creative discovery spotlights",
-        "Cross-level peer mentoring (fresher to final year)"
+      summary: "Creating stronger connections between students, departments and communities through collaboration and shared opportunities.",
+      areas: [
+        "Student networking forums",
+        "Cross-department peer support",
+        "Student talent discovery",
+        "Interdepartmental collaboration",
+        "Community impact projects"
       ],
-      ctaText: "Explore Community",
-      icon: "Users",
-      badge: "United OOU"
-    }
-  ],
-  
-  whyMattersStatement: "Students deserve more than information. They deserve access, connection and opportunity.",
-  
-  whyMattersPillars: [
-    {
-      title: "Information",
-      description: "Students should know where opportunities, deadlines, and useful academic resources exist without gatekeeping.",
-      icon: "Info"
-    },
-    {
-      title: "Access",
-      description: "Useful opportunities should be easier to discover, verify, and actually apply for regardless of department.",
-      icon: "Key"
-    },
-    {
-      title: "Connection",
-      description: "Students should have stronger, supportive communities around them to collaborate, learn, and grow together.",
       icon: "Network"
-    },
-    {
-      title: "Action",
-      description: "Good ideas should not end in speeches—they should eventually become tangible, lasting, and practical initiatives.",
-      icon: "Zap"
     }
   ],
-  
+
+  humanSideHeadline: "BECAUSE EVERY STUDENT HAS A STORY.",
+  humanSideLines: [
+    "Behind every matric number is a person.",
+    "A student trying to graduate.",
+    "Someone trying to find an internship.",
+    "Someone learning a skill.",
+    "Someone building a business.",
+    "Someone looking for an opportunity.",
+    "Someone simply trying to figure life out."
+  ],
+  humanSideConclusion: "Leadership should remember the person behind the number.",
+
+  valuesHeadline: "THE VALUES BEHIND THE VISION",
   values: [
     {
       id: "clarity",
       title: "CLARITY",
-      description: "Making complex information easier to understand and act upon.",
+      description: "Make information easier to understand.",
       icon: "Sparkles"
     },
     {
       id: "service",
       title: "SERVICE",
-      description: "Putting usefulness, integrity, and student needs before personal recognition.",
-      icon: "Hands"
-    },
-    {
-      id: "innovation",
-      title: "INNOVATION",
-      description: "Using modern technology and creative thinking to solve real everyday problems.",
-      icon: "Lightbulb"
+      description: "Create value before seeking recognition.",
+      icon: "HeartHandshake"
     },
     {
       id: "accountability",
       title: "ACCOUNTABILITY",
-      description: "Taking responsibility for commitments, feedback, and delivered outcomes.",
+      description: "Take responsibility for commitments.",
       icon: "ShieldCheck"
     },
     {
-      id: "growth",
-      title: "GROWTH",
-      description: "Continuously learning, refining skills, and improving for the community.",
-      icon: "TrendingUp"
+      id: "innovation",
+      title: "INNOVATION",
+      description: "Use technology to solve practical problems.",
+      icon: "Lightbulb"
+    },
+    {
+      id: "opportunity",
+      title: "OPPORTUNITY",
+      description: "Help students discover possibilities beyond the classroom.",
+      icon: "Compass"
     },
     {
       id: "community",
       title: "COMMUNITY",
-      description: "Creating supportive opportunities for students to learn, build, and thrive together.",
-      icon: "UsersRound"
+      description: "Build with people, not just for people.",
+      icon: "Users"
     }
   ],
-  
-  testimonials: [
-    {
-      id: "t-1",
-      quote: "Sulaiman's dedication to making complex information simple is unmatched. During our departmental work, he always ensured every single student understood what needed to be done.",
-      name: "T. Adebayo",
-      department: "Faculty of Science",
-      level: "300 Level",
-      role: "Course Representative",
-      isPlaceholder: false
-    },
-    {
-      id: "t-2",
-      quote: "He doesn't just talk about leadership; he builds solutions. When tech resources were scarce, he organized peer study notes and guided students through software tools with genuine patience.",
-      name: "C. Okonjo",
-      department: "Computer Science",
-      level: "400 Level",
-      role: "Peer Collaborator",
-      isPlaceholder: false
-    },
-    {
-      id: "t-3",
-      quote: "The Auspicious Era vision addresses the exact things students talk about every day: practical career support, transparent updates, and genuine community unity across levels.",
-      name: "I. Mohammed",
-      department: "Faculty of Law",
-      level: "200 Level",
-      role: "Student Volunteer",
-      isPlaceholder: false
-    },
-    {
-      id: "t-4",
-      quote: "[Verified student testimonial from your faculty will appear here. The Auspicious Era welcomes all voices.]",
-      name: "[Student Name Placeholder]",
-      department: "[Department Placeholder]",
-      level: "[Level Placeholder]",
-      role: "Student Member",
-      isPlaceholder: true
-    }
-  ]
+
+  whyEraHeadline: "WHY \"THE AUSPICIOUS ERA\"?",
+  whyEraParagraphs: [
+    "An auspicious era represents a period filled with promise, opportunity and the possibility of meaningful progress.",
+    "For me, The Auspicious Era is not simply a name. It represents a chapter.",
+    "A chapter where ideas should become action.",
+    "Where students should discover more opportunities.",
+    "Where technology can become a tool for progress.",
+    "Where leadership should be measured by what people experience, not simply by what a title says."
+  ],
+  whyEraCallout: "THIS IS THE ERA WE CHOOSE TO BUILD.",
+
+  philosophyQuote: "CLARITY CREATES DIRECTION. DIRECTION CREATES PROGRESS.",
+  philosophyAuthor: "Onifade Sulaiman, Mr. Clarity",
+
+  socials: {
+    instagram: "https://instagram.com",
+    tiktok: "https://tiktok.com",
+    linkedin: "https://linkedin.com",
+    facebook: "https://facebook.com",
+    x: "https://x.com"
+  }
 };

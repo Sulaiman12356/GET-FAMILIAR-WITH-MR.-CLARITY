@@ -1,66 +1,50 @@
 import React, { useState, useEffect } from 'react';
 import { initialConfig } from './data/config';
-import { SiteConfig, Testimonial, JoinFormData } from './types';
+import { SiteConfig } from './types';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
-import { AboutMe } from './components/AboutMe';
-import { Timeline } from './components/Timeline';
+import { WhoIsMrClarity } from './components/WhoIsMrClarity';
+import { TheStory } from './components/TheStory';
 import { LeadershipExperience } from './components/LeadershipExperience';
+import { TurningPoint } from './components/TurningPoint';
 import { LegacyTenure } from './components/LegacyTenure';
-import { WhyThisMatters } from './components/WhyThisMatters';
+import { HumanSide } from './components/HumanSide';
 import { Values } from './components/Values';
-import { StudentStories } from './components/StudentStories';
-import { GetInvolved } from './components/GetInvolved';
+import { WhyAuspiciousEra } from './components/WhyAuspiciousEra';
+import { PersonalPhilosophy } from './components/PersonalPhilosophy';
+import { JoinMovement } from './components/JoinMovement';
 import { PersonalWebsiteCallout } from './components/PersonalWebsiteCallout';
-import { SocialSection } from './components/SocialSection';
 import { Footer } from './components/Footer';
-import { StoryModal } from './components/StoryModal';
+import { MobileBottomCTA } from './components/MobileBottomCTA';
 import { ContentCustomizerModal } from './components/ContentCustomizerModal';
 
 export default function App() {
   const [config, setConfig] = useState<SiteConfig>(() => {
     try {
-      const saved = localStorage.getItem('auspicious_era_config');
+      const saved = localStorage.getItem('auspicious_era_v2_config');
       if (saved) {
         return { ...initialConfig, ...JSON.parse(saved) };
       }
     } catch {
-      // fallback to initialConfig
+      // fallback
     }
     return initialConfig;
   });
 
-  const [images, setImages] = useState<{ hero?: string; about?: string; campus?: string }>(() => {
+  const [heroImage, setHeroImage] = useState<string>(() => {
     try {
-      const savedImages = localStorage.getItem('auspicious_era_images');
-      if (savedImages) {
-        return JSON.parse(savedImages);
-      }
+      return localStorage.getItem('auspicious_era_v2_hero_image') || '';
     } catch {
-      // fallback
+      return '';
     }
-    return {};
   });
 
-  const [testimonials, setTestimonials] = useState<Testimonial[]>(() => {
-    try {
-      const saved = localStorage.getItem('auspicious_era_testimonials');
-      if (saved) {
-        return JSON.parse(saved);
-      }
-    } catch {
-      // fallback
-    }
-    return initialConfig.testimonials;
-  });
-
-  const [isStoryModalOpen, setIsStoryModalOpen] = useState(false);
   const [isCustomizerOpen, setIsCustomizerOpen] = useState(false);
 
   // Persistence
   useEffect(() => {
     try {
-      localStorage.setItem('auspicious_era_config', JSON.stringify(config));
+      localStorage.setItem('auspicious_era_v2_config', JSON.stringify(config));
     } catch (e) {
       console.warn('Could not persist config to localStorage', e);
     }
@@ -68,19 +52,11 @@ export default function App() {
 
   useEffect(() => {
     try {
-      localStorage.setItem('auspicious_era_images', JSON.stringify(images));
+      localStorage.setItem('auspicious_era_v2_hero_image', heroImage);
     } catch (e) {
-      console.warn('Could not persist images to localStorage', e);
+      console.warn('Could not persist hero image to localStorage', e);
     }
-  }, [images]);
-
-  useEffect(() => {
-    try {
-      localStorage.setItem('auspicious_era_testimonials', JSON.stringify(testimonials));
-    } catch (e) {
-      console.warn('Could not persist testimonials to localStorage', e);
-    }
-  }, [testimonials]);
+  }, [heroImage]);
 
   const handleSaveConfig = (updated: SiteConfig) => {
     setConfig(updated);
@@ -88,133 +64,116 @@ export default function App() {
 
   const handleResetDefaults = () => {
     setConfig(initialConfig);
-    setImages({});
-    setTestimonials(initialConfig.testimonials);
-    localStorage.removeItem('auspicious_era_config');
-    localStorage.removeItem('auspicious_era_images');
-    localStorage.removeItem('auspicious_era_testimonials');
-  };
-
-  const handleAddTestimonial = (newTestimonial: Testimonial) => {
-    setTestimonials(prev => [newTestimonial, ...prev]);
-  };
-
-  const handleJoinSubmission = (formData: JoinFormData) => {
-    console.log('New community member connected:', formData);
-  };
-
-  const scrollToGetInvolved = () => {
-    const el = document.getElementById('get-involved');
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
+    setHeroImage('');
+    localStorage.removeItem('auspicious_era_v2_config');
+    localStorage.removeItem('auspicious_era_v2_hero_image');
   };
 
   return (
-    <div className="min-h-screen bg-[#F5F7FA] text-[#111827] flex flex-col font-sans selection:bg-[#146BFF] selection:text-white">
+    <div className="min-h-screen bg-white text-[#111827] flex flex-col font-sans selection:bg-[#155EEF] selection:text-white">
       
-      {/* Sticky Navigation */}
+      {/* 03 — Navigation */}
       <Navbar 
-        onOpenGetInvolved={scrollToGetInvolved} 
+        whatsAppNumber={config.whatsAppNumber}
         brandName={config.brand}
+        name={config.name}
       />
 
-      <main className="flex-1">
+      <main className="flex-1 pb-16 md:pb-0">
         
-        {/* Session 3: Hero Section */}
+        {/* 04 — Hero Section (Pure White, Presidential, Direct WhatsApp) */}
         <Hero
           config={config}
-          heroImageUrl={images.hero}
-          onOpenStory={() => setIsStoryModalOpen(true)}
+          heroImageUrl={heroImage}
           onUploadPortrait={() => setIsCustomizerOpen(true)}
         />
 
-        {/* Session 4: About Me Section */}
-        <AboutMe
+        {/* 05 — Introduction (Beyond The Name: Who Is Mr. Clarity?) */}
+        <WhoIsMrClarity 
           config={config}
-          profileImageUrl={images.about}
-          onUploadPhoto={() => setIsCustomizerOpen(true)}
         />
 
-        {/* Session 5: My Journey (The Journey So Far) */}
-        <Timeline 
-          items={config.timeline}
+        {/* 06 — The Story (The Journey: Desires to help & Prominent Quote) */}
+        <TheStory 
+          config={config}
         />
 
-        {/* Session 6: Leadership Experience (More Than A Title) */}
+        {/* 07 — Leadership Experience (Leadership Is More Than A Title) */}
         <LeadershipExperience 
           pillars={config.leadershipPillars}
         />
 
-        {/* Session 7: The Legacy Tenure (5 Major Initiatives) */}
+        {/* 08 — The Turning Point (Leadership Should Not End With A Position) */}
+        <TurningPoint 
+          config={config}
+        />
+
+        {/* 09 — The Legacy Tenure (5 Initiatives: Something Students Can Benefit From) */}
         <LegacyTenure
+          headline={config.legacyTenureHeadline}
           intro={config.legacyTenureIntro}
           initiatives={config.legacyInitiatives}
-          onOpenJoin={scrollToGetInvolved}
+          whatsAppNumber={config.whatsAppNumber}
         />
 
-        {/* Session 8: Why This Matters */}
-        <WhyThisMatters
-          statement={config.whyMattersStatement}
-          pillars={config.whyMattersPillars}
-          campusImageUrl={images.campus}
-          onUploadCampusPhoto={() => setIsCustomizerOpen(true)}
-          onJoinClick={scrollToGetInvolved}
+        {/* 10 — The Human Side (Because Every Student Has A Story) */}
+        <HumanSide 
+          config={config}
         />
 
-        {/* Session 9: My Values (What I Stand For) */}
+        {/* 11 — What I Believe (The Values Behind The Vision) */}
         <Values 
           values={config.values}
         />
 
-        {/* Session 10: Student Stories / Social Proof */}
-        <StudentStories
-          testimonials={testimonials}
-          onAddTestimonial={handleAddTestimonial}
+        {/* 12 — Why "The Auspicious Era"? */}
+        <WhyAuspiciousEra 
+          config={config}
         />
 
-        {/* Session 11: Join / Get Involved */}
-        <GetInvolved
-          onSuccessSubmission={handleJoinSubmission}
+        {/* 13 — My Personal Philosophy */}
+        <PersonalPhilosophy
+          quote={config.philosophyQuote}
+          author={config.philosophyAuthor}
         />
 
-        {/* Session 12: Personal Website Callout */}
+        {/* 14 — Join The Movement (Main Conversion Section: WhatsApp Direct) */}
+        <JoinMovement 
+          whatsAppNumber={config.whatsAppNumber}
+        />
+
+        {/* 16 — Beyond The Auspicious Era: Personal Website */}
         <PersonalWebsiteCallout
           url={config.personalWebsiteUrl}
           onConfigureClick={() => setIsCustomizerOpen(true)}
         />
 
-        {/* Session 13: Social Media */}
-        <SocialSection 
-          socials={config.socials}
-        />
-
       </main>
 
-      {/* Session 14: Footer */}
+      {/* 17 — Footer */}
       <Footer
-        onOpenCustomizer={() => setIsCustomizerOpen(true)}
+        whatsAppNumber={config.whatsAppNumber}
         brandName={config.brand}
         name={config.name}
         nickname={config.nickname}
+        socials={config.socials}
+        onOpenCustomizer={() => setIsCustomizerOpen(true)}
       />
 
-      {/* Interactive Story Modal */}
-      <StoryModal
-        isOpen={isStoryModalOpen}
-        onClose={() => setIsStoryModalOpen(false)}
-        config={config}
+      {/* 21 — Mobile Fixed Bottom CTA */}
+      <MobileBottomCTA 
+        whatsAppNumber={config.whatsAppNumber}
       />
 
-      {/* Content & Media Management Customizer Modal */}
+      {/* 24 — Configuration & Media Modal */}
       <ContentCustomizerModal
         isOpen={isCustomizerOpen}
         onClose={() => setIsCustomizerOpen(false)}
         config={config}
         onSaveConfig={handleSaveConfig}
         onResetDefaults={handleResetDefaults}
-        heroImage={images.hero}
-        aboutImage={images.about}
-        campusImage={images.campus}
-        onUpdateImages={(updated) => setImages(prev => ({ ...prev, ...updated }))}
+        heroImage={heroImage}
+        onUpdateHeroImage={(img) => setHeroImage(img)}
       />
 
     </div>

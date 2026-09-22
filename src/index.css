@@ -5,16 +5,25 @@
   --font-display: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-handwriting: 'Caveat', cursive;
 
-  --color-navy-950: #061426;
-  --color-navy-900: #091D35;
-  --color-navy-800: #0F2B4E;
-  --color-blue-brand: #146BFF;
-  --color-blue-tint: #EAF2FF;
-  --color-slate-surface: #F5F7FA;
+  --color-white: #FFFFFF;
+  --color-navy-deep: #0B1F3A;
+  --color-blue-royal: #155EEF;
+  --color-blue-light: #EAF2FF;
+  --color-blue-subtle: #F6F9FF;
+  --color-text-dark: #111827;
+  --color-text-muted: #667085;
+  --color-border-subtle: #E5E7EB;
+}
+
+html {
+  background-color: #FFFFFF;
+  color: #111827;
 }
 
 body {
   font-family: var(--font-sans);
+  background-color: #FFFFFF;
+  color: #111827;
 }
 
 h1, h2, h3, h4, h5, h6, .font-display {

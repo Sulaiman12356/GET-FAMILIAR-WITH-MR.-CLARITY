@@ -1,188 +1,135 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, ArrowRight, Sparkles } from 'lucide-react';
+import { Menu, X, ArrowRight } from 'lucide-react';
 import { BrandLogo } from './Visuals';
+import { getWhatsAppUrl } from '../utils/whatsapp';
 
 interface NavbarProps {
-  onOpenGetInvolved?: () => void;
+  whatsAppNumber: string;
   brandName?: string;
+  name?: string;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ 
-  onOpenGetInvolved,
-  brandName = "The Auspicious Era" 
+  whatsAppNumber,
+  brandName = "THE AUSPICIOUS ERA",
+  name = "ONIFADE SULAIMAN"
 }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState('hero');
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 15);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const navLinks = [
     { name: 'Home', href: '#hero' },
     { name: 'About Me', href: '#about' },
     { name: 'My Journey', href: '#journey' },
     { name: 'Legacy Tenure', href: '#legacy' },
-    { name: 'Why This Matters', href: '#why-matters' },
-    { name: 'Get Involved', href: '#get-involved' },
+    { name: 'My Values', href: '#values' },
   ];
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-
-      // Section tracking
-      const sections = ['hero', 'about', 'journey', 'legacy', 'why-matters', 'get-involved'];
-      const scrollPosition = window.scrollY + 200;
-
-      for (const sectionId of sections) {
-        const el = document.getElementById(sectionId);
-        if (el) {
-          const top = el.offsetTop;
-          const height = el.offsetHeight;
-          if (scrollPosition >= top && scrollPosition < top + height) {
-            setActiveSection(sectionId);
-            break;
-          }
-        }
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
-    setIsOpen(false);
-    const target = document.querySelector(href);
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  const whatsAppUrl = getWhatsAppUrl(whatsAppNumber);
 
   return (
     <header 
-      id="site-navbar"
-      className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
-        scrolled 
-          ? 'bg-[#061426]/95 backdrop-blur-md shadow-lg border-b border-white/10 py-3.5' 
-          : 'bg-[#061426] border-b border-white/5 py-5'
+      className={`sticky top-0 z-40 w-full transition-all duration-200 bg-white ${
+        isScrolled 
+          ? 'shadow-xs border-b border-[#E5E7EB]' 
+          : 'border-b border-[#E5E7EB]/80'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between h-20">
           
-          {/* Logo */}
-          <a 
-            href="#hero" 
-            onClick={(e) => handleLinkClick(e, '#hero')}
-            className="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-[#146BFF] rounded-lg p-1"
-            id="nav-brand-logo"
-          >
+          {/* Left: Minimal Wordmark / Logo */}
+          <a href="#hero" className="flex items-center gap-3 group focus:outline-none">
             <BrandLogo className="w-9 h-9" />
             <div className="flex flex-col">
-              <span className="font-display font-bold text-white text-base sm:text-lg tracking-tight group-hover:text-blue-200 transition-colors">
+              <span className="font-display font-extrabold text-[#0B1F3A] tracking-wider text-sm sm:text-base group-hover:text-[#155EEF] transition-colors leading-tight">
                 {brandName}
               </span>
-              <span className="text-[11px] text-blue-200/80 font-medium tracking-wide">
-                Onifade Sulaiman (Mr. Clarity)
+              <span className="text-[11px] font-semibold text-[#667085] tracking-widest uppercase">
+                {name}
               </span>
             </div>
           </a>
 
-          {/* Desktop Nav Links */}
-          <nav className="hidden lg:flex items-center gap-1 xl:gap-2" aria-label="Main Navigation">
-            {navLinks.map((link) => {
-              const isActive = activeSection === link.href.substring(1);
-              return (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  onClick={(e) => handleLinkClick(e, link.href)}
-                  className={`px-3 py-2 text-sm font-medium rounded-lg transition-colors whitespace-nowrap ${
-                    isActive 
-                      ? 'text-white bg-white/10 font-semibold shadow-xs' 
-                      : 'text-slate-300 hover:text-white hover:bg-white/5'
-                  }`}
-                >
-                  {link.name}
-                </a>
-              );
-            })}
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center gap-7 lg:gap-8">
+            {navLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                className="text-sm font-medium text-[#111827] hover:text-[#155EEF] transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-[#155EEF] hover:after:w-full after:transition-all"
+              >
+                {link.name}
+              </a>
+            ))}
           </nav>
 
-          {/* Primary CTA Button */}
-          <div className="hidden sm:flex items-center gap-3">
+          {/* Right Desktop Primary Button */}
+          <div className="hidden md:flex items-center">
             <a
-              href="#journey"
-              onClick={(e) => handleLinkClick(e, '#journey')}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white bg-[#146BFF] hover:bg-blue-600 active:scale-98 transition-all shadow-md shadow-[#146BFF]/25 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#146BFF] focus:ring-offset-[#061426]"
-              id="nav-explore-btn"
+              href={whatsAppUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#155EEF] hover:bg-[#1048B5] text-white text-xs sm:text-sm font-semibold tracking-wide shadow-sm hover:shadow-md transition-all active:scale-[0.98]"
             >
-              <span>Explore My Journey</span>
+              <span>JOIN THE MOVEMENT</span>
               <ArrowRight className="w-4 h-4" />
             </a>
           </div>
 
-          {/* Mobile menu button */}
-          <div className="flex items-center lg:hidden">
+          {/* Mobile Hamburger Toggle */}
+          <div className="flex md:hidden items-center">
             <button
               type="button"
-              onClick={() => setIsOpen(!isOpen)}
-              className="p-2.5 rounded-xl text-slate-300 hover:text-white hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-[#146BFF]"
-              aria-expanded={isOpen}
-              aria-label="Toggle navigation menu"
-              id="mobile-menu-toggle"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="p-2 rounded-lg text-[#0B1F3A] hover:bg-[#F6F9FF] focus:outline-none"
+              aria-label="Toggle Navigation Menu"
             >
-              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
 
         </div>
       </div>
 
-      {/* Mobile Navigation Panel */}
-      {isOpen && (
-        <div 
-          className="lg:hidden fixed inset-x-0 top-[65px] bg-[#061426] border-b border-white/15 px-4 pt-4 pb-6 shadow-2xl animate-in slide-in-from-top duration-200"
-          id="mobile-nav-panel"
-        >
+      {/* Mobile Slide-down Menu */}
+      {mobileMenuOpen && (
+        <div className="md:hidden bg-white border-b border-[#E5E7EB] px-4 pt-3 pb-6 space-y-3 animate-in fade-in slide-in-from-top-2 duration-200">
           <div className="flex flex-col space-y-1">
-            {navLinks.map((link) => {
-              const isActive = activeSection === link.href.substring(1);
-              return (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  onClick={(e) => handleLinkClick(e, link.href)}
-                  className={`px-4 py-3 rounded-xl text-base font-medium flex items-center justify-between ${
-                    isActive
-                      ? 'bg-[#146BFF] text-white font-semibold'
-                      : 'text-slate-200 hover:bg-white/5 hover:text-white'
-                  }`}
-                >
-                  <span>{link.name}</span>
-                  {isActive && <Sparkles className="w-4 h-4 text-white" />}
-                </a>
-              );
-            })}
+            {navLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className="px-3 py-2.5 rounded-lg text-sm font-medium text-[#111827] hover:bg-[#F6F9FF] hover:text-[#155EEF] transition-colors"
+              >
+                {link.name}
+              </a>
+            ))}
           </div>
 
-          <div className="pt-4 mt-3 border-t border-white/10 space-y-2">
+          <div className="pt-2 border-t border-slate-100">
             <a
-              href="#journey"
-              onClick={(e) => handleLinkClick(e, '#journey')}
-              className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-sm font-semibold text-white bg-[#146BFF] hover:bg-blue-600 transition-colors shadow-sm"
+              href={whatsAppUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setMobileMenuOpen(false)}
+              className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[#155EEF] text-white text-sm font-semibold shadow-xs"
             >
-              <span>Explore My Journey</span>
+              <span>JOIN THE MOVEMENT</span>
               <ArrowRight className="w-4 h-4" />
             </a>
-
-            <a
-              href="#get-involved"
-              onClick={(e) => handleLinkClick(e, '#get-involved')}
-              className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-sm font-semibold text-slate-200 bg-white/10 hover:bg-white/15 transition-colors"
-            >
-              <span>Join The Movement</span>
-            </a>
+            <p className="text-[11px] text-center text-[#667085] mt-2">
+              No form. Connects straight to WhatsApp.
+            </p>
           </div>
         </div>
       )}

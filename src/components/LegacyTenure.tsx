@@ -1,169 +1,143 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { 
   GraduationCap, 
-  HeartPulse, 
+  Heart, 
   Cpu, 
   Briefcase, 
-  Users, 
-  ArrowRight, 
-  Sparkles,
-  CheckCircle2
+  Network, 
+  ArrowRight,
+  Check
 } from 'lucide-react';
 import { LegacyInitiative } from '../types';
-import { InitiativeModal } from './InitiativeModal';
+import { getWhatsAppUrl } from '../utils/whatsapp';
 
 interface LegacyTenureProps {
+  headline: string;
   intro: string;
   initiatives: LegacyInitiative[];
-  onOpenJoin: () => void;
+  whatsAppNumber: string;
 }
 
 export const LegacyTenure: React.FC<LegacyTenureProps> = ({ 
+  headline, 
   intro, 
   initiatives,
-  onOpenJoin 
+  whatsAppNumber
 }) => {
-  const [selectedInitiative, setSelectedInitiative] = useState<LegacyInitiative | null>(null);
+  const whatsAppUrl = getWhatsAppUrl(whatsAppNumber);
 
-  const getCardIcon = (id: string) => {
-    switch (id) {
-      case 'academic-excellence':
-        return <GraduationCap className="w-6 h-6 text-[#146BFF]" />;
-      case 'student-welfare':
-        return <HeartPulse className="w-6 h-6 text-[#146BFF]" />;
-      case 'technology-innovation':
-        return <Cpu className="w-6 h-6 text-[#146BFF]" />;
-      case 'skills-opportunities':
-        return <Briefcase className="w-6 h-6 text-[#146BFF]" />;
-      case 'community-unity':
-        return <Users className="w-6 h-6 text-[#146BFF]" />;
+  const getInitiativeIcon = (iconName: string) => {
+    switch (iconName) {
+      case 'GraduationCap':
+        return <GraduationCap className="w-5 h-5 text-[#155EEF]" />;
+      case 'Heart':
+        return <Heart className="w-5 h-5 text-[#155EEF]" />;
+      case 'Cpu':
+        return <Cpu className="w-5 h-5 text-[#155EEF]" />;
+      case 'Briefcase':
+        return <Briefcase className="w-5 h-5 text-[#155EEF]" />;
+      case 'Network':
+        return <Network className="w-5 h-5 text-[#155EEF]" />;
       default:
-        return <Sparkles className="w-6 h-6 text-[#146BFF]" />;
+        return <GraduationCap className="w-5 h-5 text-[#155EEF]" />;
     }
   };
 
   return (
     <section 
       id="legacy" 
-      className="py-20 lg:py-32 bg-[#091D35] text-white relative overflow-hidden"
+      className="py-20 lg:py-28 bg-[#FFFFFF] text-[#111827] border-b border-[#E5E7EB]/60"
     >
-      {/* Background accents */}
-      <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#146BFF]/10 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-0 left-10 w-96 h-96 bg-[#061426] rounded-full blur-[100px] pointer-events-none" />
-
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header */}
+        {/* Header */}
         <div className="max-w-3xl mb-14 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-white/10 text-blue-200 border border-white/10 mb-3">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#EAF2FF] text-[#155EEF] mb-3">
             <span>THE LEGACY TENURE</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight font-display text-white">
-            More Than A Title. <br className="hidden sm:inline" />
-            <span className="text-[#146BFF]">A Lasting Impact.</span>
+
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight font-display text-[#0B1F3A] leading-tight">
+            More Than A Title. <br />
+            <span className="text-[#155EEF]">Something Students Can Actually Benefit From.</span>
           </h2>
-          <p className="mt-4 text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl">
+
+          <p className="mt-4 text-base sm:text-lg text-[#667085] leading-relaxed">
             {intro}
           </p>
         </div>
 
-        {/* 5 Major Initiative Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {initiatives.map((item, idx) => (
+        {/* 5 Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 items-stretch">
+          {initiatives.map((item) => (
             <div
               key={item.id}
-              className={`bg-[#061426]/90 rounded-3xl p-7 border border-white/10 hover:border-[#146BFF]/50 transition-all duration-300 flex flex-col justify-between group shadow-xl hover:-translate-y-1 ${
-                idx === 4 ? 'md:col-span-2 lg:col-span-1' : ''
-              }`}
+              className="bg-white rounded-2xl p-7 sm:p-8 border border-[#E5E7EB] hover:border-[#155EEF]/40 shadow-xs hover:shadow-md transition-all duration-300 flex flex-col justify-between group"
             >
               <div>
-                {/* Top Bar with Number & Badge */}
                 <div className="flex items-center justify-between mb-5">
-                  <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-[#146BFF]/20 group-hover:border-[#146BFF]/40 transition-colors">
-                    {getCardIcon(item.id)}
+                  <div className="w-12 h-12 rounded-xl bg-[#F6F9FF] group-hover:bg-[#EAF2FF] flex items-center justify-center transition-colors">
+                    {getInitiativeIcon(item.icon)}
                   </div>
-                  <div className="flex items-center gap-2">
-                    {item.badge && (
-                      <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-white/10 text-slate-300">
-                        {item.badge}
-                      </span>
-                    )}
-                    <span className="font-mono text-sm font-bold text-slate-400">
-                      {item.number}
-                    </span>
-                  </div>
+                  <span className="font-display font-black text-sm text-[#155EEF] bg-[#EAF2FF] px-2.5 py-1 rounded-md">
+                    {item.number}
+                  </span>
                 </div>
 
-                {/* Title & Focus */}
-                <h3 className="text-xl font-bold font-display text-white tracking-tight group-hover:text-blue-200 transition-colors">
+                <h3 className="font-display font-extrabold text-xl text-[#0B1F3A] tracking-tight group-hover:text-[#155EEF] transition-colors">
                   {item.title}
                 </h3>
-                <p className="text-xs font-semibold uppercase tracking-wider text-[#146BFF] mt-1 mb-3">
-                  Focus: {item.focus}
-                </p>
 
-                {/* Summary */}
-                <p className="text-sm text-slate-300 leading-relaxed mb-5">
+                <p className="text-sm text-[#667085] mt-3 leading-relaxed">
                   {item.summary}
                 </p>
 
-                {/* Key Points Preview */}
-                <ul className="space-y-2 mb-6 border-t border-white/10 pt-4 text-xs text-slate-300">
-                  {item.initiatives.slice(0, 3).map((sub, i) => (
-                    <li key={i} className="flex items-start gap-2">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-[#146BFF] shrink-0 mt-0.5" />
-                      <span className="line-clamp-1">{sub}</span>
-                    </li>
-                  ))}
-                  {item.initiatives.length > 3 && (
-                    <li className="text-[11px] text-[#146BFF] font-semibold pl-5">
-                      +{item.initiatives.length - 3} more strategic measures
-                    </li>
-                  )}
-                </ul>
+                <div className="mt-6 pt-5 border-t border-slate-100">
+                  <p className="text-xs font-bold uppercase tracking-wider text-[#0B1F3A] mb-3">
+                    Focus Initiatives:
+                  </p>
+                  <ul className="space-y-2">
+                    {item.areas.map((area, i) => (
+                      <li key={i} className="flex items-center gap-2 text-xs font-medium text-[#111827]">
+                        <Check className="w-3.5 h-3.5 text-[#155EEF] shrink-0" />
+                        <span>{area}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
 
-              {/* Card Action Button */}
-              <button
-                type="button"
-                onClick={() => setSelectedInitiative(item)}
-                className="w-full inline-flex items-center justify-between px-4 py-2.5 rounded-xl bg-white/5 hover:bg-[#146BFF] text-white text-xs font-bold tracking-wide uppercase transition-all duration-200 border border-white/10 group-hover:border-[#146BFF]"
-              >
-                <span>{item.ctaText}</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </button>
+              <div className="mt-6 pt-4 border-t border-slate-100">
+                <span className="text-[11px] font-bold text-[#155EEF] uppercase tracking-wider">
+                  The Auspicious Era Pillar
+                </span>
+              </div>
             </div>
           ))}
         </div>
 
-        {/* Bottom Banner with Action */}
-        <div className="mt-14 p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-[#061426] via-[#0F2B4E] to-[#061426] border border-white/15 flex flex-col sm:flex-row items-center justify-between gap-6">
-          <div className="space-y-1 text-center sm:text-left">
-            <h4 className="text-xl font-bold font-display text-white">
-              Ready to help shape these initiatives?
+        {/* Section 15 Contextual CTA Banner */}
+        <div className="mt-14 p-6 sm:p-8 rounded-2xl bg-[#F6F9FF] border border-[#E5E7EB] flex flex-col sm:flex-row items-center justify-between gap-5">
+          <div>
+            <h4 className="font-display font-bold text-lg text-[#0B1F3A]">
+              If you believe students deserve more opportunities, join the movement.
             </h4>
-            <p className="text-sm text-slate-300 max-w-xl">
-              The Auspicious Era thrives on student ideas, committee participation, and constructive input across all faculties.
+            <p className="text-xs sm:text-sm text-[#667085] mt-1">
+              Connect directly on WhatsApp with your name and department.
             </p>
           </div>
-          <button
-            type="button"
-            onClick={onOpenJoin}
-            className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold text-white bg-[#146BFF] hover:bg-blue-600 transition-all shrink-0 shadow-lg shadow-[#146BFF]/30"
+
+          <a
+            href={whatsAppUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#155EEF] hover:bg-[#1048B5] text-white font-semibold text-xs sm:text-sm tracking-wide shadow-xs shrink-0 transition-colors"
           >
-            <span>Get Involved Now</span>
+            <span>JOIN THE MOVEMENT</span>
             <ArrowRight className="w-4 h-4" />
-          </button>
+          </a>
         </div>
 
       </div>
-
-      {/* Deep-dive modal */}
-      <InitiativeModal
-        initiative={selectedInitiative}
-        onClose={() => setSelectedInitiative(null)}
-        onJoinAction={onOpenJoin}
-      />
     </section>
   );
 };

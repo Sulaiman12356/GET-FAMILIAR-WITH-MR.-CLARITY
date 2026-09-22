@@ -1,32 +1,19 @@
-export interface TimelineItem {
-  id: string;
-  step: string;
-  title: string;
-  role: string;
-  description: string;
-  period?: string;
-  highlights?: string[];
-}
-
 export interface LeadershipPillar {
   id: string;
   title: string;
-  focus: string;
+  subtitle: string;
   description: string;
   icon: string;
-  metrics?: string;
+  highlights?: string[];
 }
 
 export interface LegacyInitiative {
   id: string;
   number: string;
   title: string;
-  focus: string;
   summary: string;
-  initiatives: string[];
-  ctaText: string;
+  areas: string[];
   icon: string;
-  badge?: string;
 }
 
 export interface CoreValue {
@@ -36,67 +23,46 @@ export interface CoreValue {
   icon: string;
 }
 
-export interface Testimonial {
-  id: string;
-  quote: string;
-  name: string;
-  department: string;
-  level: string;
-  role?: string;
-  isPlaceholder?: boolean;
-}
-
 export interface SiteConfig {
   name: string;
   nickname: string;
-  title: string;
   brand: string;
-  tagline: string;
-  alternativeTagline: string;
   institution: string;
-  facultyOrDept: string;
-  heroHeadline: string;
-  heroHeadlineHighlight: string;
-  heroBio: string;
-  aboutIntro: string;
-  aboutBelief: string;
-  aboutImpact: string;
-  quote: string;
-  quoteAuthor: string;
+  whatsAppNumber: string;
+  whatsAppDefaultMessage: string;
   personalWebsiteUrl: string;
-  contactEmail: string;
-  contactWhatsApp: string;
-  socials: {
-    instagram: string;
-    facebook: string;
-    linkedin: string;
-    tiktok: string;
-    x: string;
-    whatsapp: string;
-    youtube?: string;
-  };
-  roles: string[];
-  timeline: TimelineItem[];
+  heroHeadlineTop: string;
+  heroHeadlineHighlight: string;
+  heroBio1: string;
+  heroBio2: string;
+  beyondNameSubtitle: string;
+  whoIsIntro: string;
+  whoIsPhilosophy: string;
+  identityTags: string[];
+  storyHeadline: string;
+  storyQuote: string;
+  storyParagraphs: string[];
   leadershipPillars: LeadershipPillar[];
+  turningPointHeadline: string;
+  turningPointParagraphs: string[];
+  legacyTenureHeadline: string;
   legacyTenureIntro: string;
   legacyInitiatives: LegacyInitiative[];
-  whyMattersStatement: string;
-  whyMattersPillars: {
-    title: string;
-    description: string;
-    icon: string;
-  }[];
+  humanSideHeadline: string;
+  humanSideLines: string[];
+  humanSideConclusion: string;
+  valuesHeadline: string;
   values: CoreValue[];
-  testimonials: Testimonial[];
-}
-
-export interface JoinFormData {
-  fullName: string;
-  department: string;
-  level: string;
-  email: string;
-  whatsAppNumber: string;
-  areaOfInterest: string;
-  contribution: string;
-  message: string;
+  whyEraHeadline: string;
+  whyEraParagraphs: string[];
+  whyEraCallout: string;
+  philosophyQuote: string;
+  philosophyAuthor: string;
+  socials: {
+    instagram: string;
+    tiktok: string;
+    linkedin: string;
+    facebook: string;
+    x: string;
+  };
 }
