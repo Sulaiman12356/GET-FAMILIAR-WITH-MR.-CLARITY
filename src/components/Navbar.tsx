@@ -43,6 +43,27 @@ export const Navbar: React.FC<NavbarProps> = ({
           : 'border-b border-[#E5E7EB]/80'
       }`}
     >
+      {/* Top Banner: GET FAMILIAR WITH CLARITY */}
+      <div className="bg-[#0B1F3A] text-white py-2 px-4 border-b border-[#155EEF]/20">
+        <div className="max-w-7xl mx-auto flex items-center justify-between gap-3 text-xs">
+          <div className="flex items-center gap-2 font-black tracking-wider text-xs uppercase mx-auto sm:mx-0">
+            <span className="w-2 h-2 rounded-full bg-[#155EEF] animate-pulse shrink-0" />
+            <span className="text-[#155EEF] font-black tracking-widest font-display">GET FAMILIAR WITH CLARITY</span>
+            <span className="text-white/40 hidden sm:inline">•</span>
+            <span className="text-white/80 font-medium normal-case hidden sm:inline">The Official Student Leadership Platform of Onifade Sulaiman</span>
+          </div>
+          <a
+            href={whatsAppUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden sm:inline-flex items-center gap-1.5 text-[11px] font-bold text-[#155EEF] hover:text-white transition-colors"
+          >
+            <span>Direct WhatsApp</span>
+            <span>→</span>
+          </a>
+        </div>
+      </div>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           

@@ -105,14 +105,15 @@ export default function App() {
   }, [heroImage]);
 
   // Save to platform server and synchronize across all devices
-  const handleSaveConfig = useCallback(async (updated: SiteConfig, newPassword?: string): Promise<boolean> => {
+  const handleSaveConfig = useCallback(async (updated: SiteConfig, newPassword?: string, sessionPassword?: string): Promise<boolean> => {
     try {
+      const activePassword = sessionPassword || adminPassword;
       // Broadcast to platform API
       const res = await fetch('/api/config', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          password: adminPassword,
+          password: activePassword,
           config: updated,
           heroImage,
           newPassword: newPassword || undefined
@@ -168,7 +169,7 @@ export default function App() {
   return (
     <div className="min-h-screen bg-white text-[#111827] flex flex-col font-sans selection:bg-[#155EEF] selection:text-white">
       
-      {/* 03 — Navigation */}
+      {/* 03: Navigation */}
       <Navbar 
         whatsAppNumber={config.whatsAppNumber}
         brandName={config.brand}
@@ -177,34 +178,34 @@ export default function App() {
 
       <main className="flex-1 pb-16 md:pb-0">
         
-        {/* 04 — Hero Section (Pure White, Presidential, Direct WhatsApp) */}
+        {/* 04: Hero Section (Pure White, Presidential, Direct WhatsApp) */}
         <Hero
           config={config}
           heroImageUrl={heroImage}
           onUploadPortrait={() => setIsCustomizerOpen(true)}
         />
 
-        {/* 05 — Introduction (Beyond The Name: Who Is Mr. Clarity?) */}
+        {/* 05: Introduction (Beyond The Name: Who Is Mr. Clarity?) */}
         <WhoIsMrClarity 
           config={config}
         />
 
-        {/* 06 — The Story (The Journey: Desires to help & Prominent Quote) */}
+        {/* 06: The Story (The Journey: Desires to help and Prominent Quote) */}
         <TheStory 
           config={config}
         />
 
-        {/* 07 — Leadership Experience (Leadership Is More Than A Title) */}
+        {/* 07: Leadership Experience (Leadership Is More Than A Title) */}
         <LeadershipExperience 
           pillars={config.leadershipPillars}
         />
 
-        {/* 08 — The Turning Point (Leadership Should Not End With A Position) */}
+        {/* 08: The Turning Point (Leadership Should Not End With A Position) */}
         <TurningPoint 
           config={config}
         />
 
-        {/* 09 — The Legacy Tenure (5 Initiatives: Something Students Can Benefit From) */}
+        {/* 09: The Legacy Tenure (5 Initiatives: Something Students Can Benefit From) */}
         <LegacyTenure
           headline={config.legacyTenureHeadline}
           intro={config.legacyTenureIntro}
@@ -212,33 +213,33 @@ export default function App() {
           whatsAppNumber={config.whatsAppNumber}
         />
 
-        {/* 10 — The Human Side (Because Every Student Has A Story) */}
+        {/* 10: The Human Side (Because Every Student Has A Story) */}
         <HumanSide 
           config={config}
         />
 
-        {/* 11 — What I Believe (The Values Behind The Vision) */}
+        {/* 11: What I Believe (The Values Behind The Vision) */}
         <Values 
           values={config.values}
         />
 
-        {/* 12 — Why "The Auspicious Era"? */}
+        {/* 12: Why "The Auspicious Era"? */}
         <WhyAuspiciousEra 
           config={config}
         />
 
-        {/* 13 — My Personal Philosophy */}
+        {/* 13: My Personal Philosophy */}
         <PersonalPhilosophy
           quote={config.philosophyQuote}
           author={config.philosophyAuthor}
         />
 
-        {/* 14 — Join The Movement (Main Conversion Section: WhatsApp Direct) */}
+        {/* 14: Join The Movement (Main Conversion Section: WhatsApp Direct) */}
         <JoinMovement 
           whatsAppNumber={config.whatsAppNumber}
         />
 
-        {/* 16 — Beyond The Auspicious Era: Personal Website */}
+        {/* 16: Beyond The Auspicious Era: Personal Website */}
         <PersonalWebsiteCallout
           url={config.personalWebsiteUrl}
           onConfigureClick={() => setIsCustomizerOpen(true)}
@@ -246,7 +247,7 @@ export default function App() {
 
       </main>
 
-      {/* 17 — Footer */}
+      {/* 17: Footer */}
       <Footer
         whatsAppNumber={config.whatsAppNumber}
         brandName={config.brand}
@@ -256,12 +257,12 @@ export default function App() {
         onOpenCustomizer={() => setIsCustomizerOpen(true)}
       />
 
-      {/* 21 — Mobile Fixed Bottom CTA */}
+      {/* 21: Mobile Fixed Bottom CTA */}
       <MobileBottomCTA 
         whatsAppNumber={config.whatsAppNumber}
       />
 
-      {/* 24 — Configuration & Media Modal (Password Protected, Cross-Device Sync) */}
+      {/* 24: Configuration and Media Modal (Password Protected, Cross-Device Sync) */}
       <ContentCustomizerModal
         isOpen={isCustomizerOpen}
         onClose={() => setIsCustomizerOpen(false)}

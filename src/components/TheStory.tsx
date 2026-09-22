@@ -48,9 +48,14 @@ export const TheStory: React.FC<TheStoryProps> = ({ config }) => {
               "{config.storyQuote}"
             </blockquote>
 
-            <p className="text-xs sm:text-sm font-semibold text-[#667085] mt-4">
-              — Onifade Sulaiman (Mr. Clarity)
-            </p>
+            <div className="mt-5 flex items-center gap-3">
+              <span className="font-handwriting text-2xl sm:text-3xl text-[#155EEF] font-bold">
+                Onifade Sulaiman
+              </span>
+              <span className="text-xs sm:text-sm font-bold text-[#667085]">
+                (Mr. Clarity)
+              </span>
+            </div>
           </div>
         </div>
 

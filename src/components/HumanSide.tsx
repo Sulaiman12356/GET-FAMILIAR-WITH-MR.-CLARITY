@@ -36,11 +36,11 @@ export const HumanSide: React.FC<HumanSideProps> = ({ config }) => {
 
         {/* Emotional punchline */}
         <div className="mt-12 pt-8 border-t border-[#E5E7EB] inline-block">
-          <p className="font-display font-black text-xl sm:text-2xl text-[#155EEF] tracking-tight">
+          <p className="font-handwriting text-3xl sm:text-4xl text-[#155EEF] font-bold tracking-tight">
             "{config.humanSideConclusion}"
           </p>
-          <span className="text-xs text-[#667085] mt-2 block font-medium">
-            The core philosophy of Onifade Sulaiman (Mr. Clarity)
+          <span className="text-xs text-[#667085] mt-2 block font-semibold">
+            A personal reminder from Onifade Sulaiman (Mr. Clarity)
           </span>
         </div>
 

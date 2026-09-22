@@ -29,15 +29,21 @@ export const Hero: React.FC<HeroProps> = ({
           {/* Left Column: Text & CTAs */}
           <div className="lg:col-span-7 space-y-7">
             
-            {/* Hero Label & Prominent Moniker Banner */}
-            <div className="flex flex-wrap items-center gap-3">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EAF2FF] border border-[#155EEF]/30 text-xs sm:text-sm font-extrabold tracking-wide text-[#155EEF] shadow-xs">
-                <span className="w-2 h-2 rounded-full bg-[#155EEF] animate-pulse" />
-                <span>ONIFADE SULAIMAN • POPULARLY KNOWN AS <span className="font-black underline decoration-2 underline-offset-2">MR. CLARITY</span></span>
+            {/* The first word at the top */}
+            <div className="space-y-3">
+              <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#155EEF] text-white text-xs sm:text-sm font-black tracking-widest uppercase shadow-xs">
+                <span className="w-2 h-2 rounded-full bg-white animate-pulse shrink-0" />
+                <span className="font-display">GET FAMILIAR WITH CLARITY</span>
               </div>
-              <span className="text-xs font-bold uppercase tracking-widest text-[#667085] hidden sm:inline">
-                {config.brand}
-              </span>
+
+              <div className="flex flex-wrap items-center gap-3">
+                <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#EAF2FF] border border-[#155EEF]/30 text-xs sm:text-sm font-extrabold tracking-wide text-[#155EEF]">
+                  <span>ONIFADE SULAIMAN, POPULARLY KNOWN AS <span className="font-black underline decoration-2 underline-offset-2">MR. CLARITY</span></span>
+                </div>
+                <span className="font-handwriting text-lg text-[#155EEF] font-bold">
+                  From my notebook to your screen
+                </span>
+              </div>
             </div>
 
             {/* Main Headline */}

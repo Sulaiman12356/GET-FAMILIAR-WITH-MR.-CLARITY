@@ -15,11 +15,11 @@ export const initialConfig: SiteConfig = {
   heroHeadlineHighlight: "A LASTING LEGACY.",
   
   heroBio1: "My name is Onifade Sulaiman, popularly known as Mr. Clarity. I am a Computer Science student, student leader, digital strategist and community builder passionate about helping students find clarity, discover opportunities and create meaningful progress.",
-  heroBio2: "The Auspicious Era represents a chapter of service, ideas and impact — built around what students can experience, access and achieve together.",
+  heroBio2: "The Auspicious Era represents an intentional chapter of real service, practical ideas, and genuine impact built around what we as students can experience, access, and achieve together.",
   
-  beyondNameSubtitle: "Before leadership comes identity. Before a position comes purpose.",
-  whoIsIntro: "Onifade Sulaiman, popularly known as Mr. Clarity, is a Computer Science student at Olabisi Onabanjo University whose journey has grown through academics, student representation, digital innovation, entrepreneurship, technology and service.",
-  whoIsPhilosophy: "The name \"Mr. Clarity\" comes from a simple idea: people make better decisions when they have better information and better understanding.",
+  beyondNameSubtitle: "Before any title, there is identity. Before any office, there is a clear purpose.",
+  whoIsIntro: "Onifade Sulaiman, popularly known as Mr. Clarity, is a Computer Science student at Olabisi Onabanjo University whose journey has been shaped by academics, student representation, digital innovation, entrepreneurship, and hands-on community service.",
+  whoIsPhilosophy: "The name \"Mr. Clarity\" comes from a simple realization: when you give students clear information and honest direction, they make confident decisions and build better futures.",
   
   identityTags: [
     "Computer Science Student",

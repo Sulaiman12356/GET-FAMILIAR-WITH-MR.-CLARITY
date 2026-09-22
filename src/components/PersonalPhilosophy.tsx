@@ -25,12 +25,14 @@ export const PersonalPhilosophy: React.FC<PersonalPhilosophyProps> = ({
         {/* Subtle royal blue line */}
         <div className="w-20 h-1 bg-[#155EEF] rounded-full mx-auto my-8" />
 
-        <p className="text-base sm:text-lg font-bold text-[#0B1F3A]">
-          — {author}
-        </p>
-        <span className="text-xs text-[#667085] mt-1 block uppercase tracking-wider font-semibold">
-          Department of Computer Science • OOU
-        </span>
+        <div className="space-y-1">
+          <p className="font-handwriting text-3xl sm:text-4xl font-bold text-[#155EEF]">
+            {author}
+          </p>
+          <span className="text-xs text-[#667085] block uppercase tracking-wider font-semibold">
+            Department of Computer Science, OOU
+          </span>
+        </div>
 
       </div>
     </section>

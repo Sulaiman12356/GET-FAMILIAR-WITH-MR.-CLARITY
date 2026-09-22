@@ -26,7 +26,7 @@ interface CustomizerProps {
   isOpen: boolean;
   onClose: () => void;
   config: SiteConfig;
-  onSaveConfig: (updated: SiteConfig, newPassword?: string) => Promise<boolean>;
+  onSaveConfig: (updated: SiteConfig, newPassword?: string, sessionPassword?: string) => Promise<boolean>;
   onResetDefaults: () => void;
   heroImage?: string;
   onUpdateHeroImage: (image: string) => void;
@@ -41,13 +41,14 @@ export const ContentCustomizerModal: React.FC<CustomizerProps> = ({
   onResetDefaults,
   heroImage,
   onUpdateHeroImage,
-  adminPassword = 'clarity2026',
+  adminPassword,
 }) => {
   if (!isOpen) return null;
 
   // Authentication State
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [passwordInput, setPasswordInput] = useState('');
+  const [sessionPassword, setSessionPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [authError, setAuthError] = useState('');
   const [isVerifying, setIsVerifying] = useState(false);
@@ -87,11 +88,13 @@ export const ContentCustomizerModal: React.FC<CustomizerProps> = ({
 
       if (res.ok) {
         setIsAuthenticated(true);
+        setSessionPassword(passwordInput.trim());
         setAuthError('');
       } else {
         // Fallback check against prop or default password
-        if (passwordInput.trim() === adminPassword || passwordInput.trim() === 'clarity2026') {
+        if (passwordInput.trim() === (adminPassword || 'clarity2026')) {
           setIsAuthenticated(true);
+          setSessionPassword(passwordInput.trim());
           setAuthError('');
         } else {
           setAuthError('Incorrect administrator password. Access denied.');
@@ -99,8 +102,9 @@ export const ContentCustomizerModal: React.FC<CustomizerProps> = ({
       }
     } catch {
       // Network/offline fallback
-      if (passwordInput.trim() === adminPassword || passwordInput.trim() === 'clarity2026') {
+      if (passwordInput.trim() === (adminPassword || 'clarity2026')) {
         setIsAuthenticated(true);
+        setSessionPassword(passwordInput.trim());
         setAuthError('');
       } else {
         setAuthError('Incorrect administrator password. Access denied.');
@@ -139,12 +143,13 @@ export const ContentCustomizerModal: React.FC<CustomizerProps> = ({
 
     try {
       onUpdateHeroImage(currentHeroImage);
-      const success = await onSaveConfig(formData, pwdToUpdate);
+      const success = await onSaveConfig(formData, pwdToUpdate, sessionPassword);
 
       if (success) {
         setSavedNotice(true);
         if (pwdToUpdate) {
           setPasswordChangeSuccess(true);
+          setSessionPassword(pwdToUpdate);
           setNewPassword('');
           setConfirmPassword('');
         }
@@ -189,6 +194,7 @@ export const ContentCustomizerModal: React.FC<CustomizerProps> = ({
   const handleLock = () => {
     setIsAuthenticated(false);
     setPasswordInput('');
+    setSessionPassword('');
     setAuthError('');
   };
 
@@ -282,12 +288,10 @@ export const ContentCustomizerModal: React.FC<CustomizerProps> = ({
                 </button>
               </div>
 
-              <div className="pt-3 p-3.5 rounded-xl bg-[#F6F9FF] border border-[#E5E7EB] text-[11px] text-[#475467] leading-relaxed text-center">
-                <p>
-                  Default setup password: <strong className="text-[#155EEF] font-mono font-bold">clarity2026</strong>
-                </p>
-                <p className="text-[10px] text-[#667085] mt-0.5">
-                  You can change this password anytime in the Security tab once unlocked.
+              <div className="pt-3 p-3.5 rounded-xl bg-[#F6F9FF] border border-[#E5E7EB] text-center">
+                <p className="text-xs text-[#667085] flex items-center justify-center gap-1.5 font-medium">
+                  <Lock className="w-3.5 h-3.5 text-[#155EEF]" />
+                  <span>Authorized administrator access only. Tampering attempts are restricted.</span>
                 </p>
               </div>
             </form>

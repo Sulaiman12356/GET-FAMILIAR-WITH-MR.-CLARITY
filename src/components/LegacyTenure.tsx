@@ -59,7 +59,7 @@ export const LegacyTenure: React.FC<LegacyTenureProps> = ({
 
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight font-display text-[#0B1F3A] leading-[1.08]">
             THE LEGACY TENURE. <br />
-            <span className="text-[#155EEF]">More Than A Title — Real Student Impact.</span>
+            <span className="text-[#155EEF]">More Than Just A Title. Real Student Impact.</span>
           </h2>
 
           <p className="mt-4 text-base sm:text-lg font-medium text-[#475467] leading-relaxed">
