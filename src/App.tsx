@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import { initialConfig } from './data/config';
 import { SiteConfig, Testimonial, JoinFormData } from './types';
 import { Navbar } from './components/Navbar';
@@ -216,6 +217,9 @@ export default function App() {
         campusImage={images.campus}
         onUpdateImages={(updated) => setImages(prev => ({ ...prev, ...updated }))}
       />
+
+      {/* Vercel Speed Insights */}
+      <SpeedInsights />
 
     </div>
   );
