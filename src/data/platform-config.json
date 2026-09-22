@@ -1,0 +1,210 @@
+{
+  "adminPassword": "clarity2026",
+  "lastUpdated": "2026-09-22T00:00:00.000Z",
+  "heroImage": "",
+  "config": {
+    "name": "Onifade Sulaiman",
+    "nickname": "Mr. Clarity",
+    "brand": "The Auspicious Era",
+    "institution": "Olabisi Onabanjo University",
+    "whatsAppNumber": "2348051780169",
+    "whatsAppDefaultMessage": "Hello Mr. Clarity, my name is [Name] from [Department]. I would like to join The Auspicious Era movement.",
+    "personalWebsiteUrl": "",
+    "heroHeadlineTop": "A NEW CHAPTER.",
+    "heroHeadlineHighlight": "A LASTING LEGACY.",
+    "heroBio1": "My name is Onifade Sulaiman, popularly known as Mr. Clarity. I am a Computer Science student, student leader, digital strategist and community builder passionate about helping students find clarity, discover opportunities and create meaningful progress.",
+    "heroBio2": "The Auspicious Era represents a chapter of service, ideas and impact — built around what students can experience, access and achieve together.",
+    "beyondNameSubtitle": "Before leadership comes identity. Before a position comes purpose.",
+    "whoIsIntro": "Onifade Sulaiman, popularly known as Mr. Clarity, is a Computer Science student at Olabisi Onabanjo University whose journey has grown through academics, student representation, digital innovation, entrepreneurship, technology and service.",
+    "whoIsPhilosophy": "The name \"Mr. Clarity\" comes from a simple idea: people make better decisions when they have better information and better understanding.",
+    "identityTags": [
+      "Computer Science Student",
+      "Student Leader",
+      "Digital Strategist",
+      "Technology Enthusiast",
+      "Community Builder"
+    ],
+    "storyHeadline": "I DIDN'T START WITH A TITLE. I STARTED WITH A DESIRE TO HELP.",
+    "storyQuote": "A position ends. A legacy can continue.",
+    "storyParagraphs": [
+      "My journey through university has not been a straight line.",
+      "I have had to learn, adapt, take responsibility, make mistakes, serve people, build skills and continuously figure out what direction I want my life to take.",
+      "Along the way, leadership became one of the ways I could contribute to the people around me.",
+      "But leadership also taught me something important: a position is temporary. What you build, what you teach, the people you help and the opportunities you create can last much longer."
+    ],
+    "leadershipPillars": [
+      {
+        "id": "class-rep",
+        "title": "CLASS REPRESENTATION",
+        "subtitle": "Grassroots Student Voice",
+        "description": "Experience representing students, communicating information and helping coordinate student concerns directly with academic staff and faculty.",
+        "icon": "Users",
+        "highlights": [
+          "Open student communication",
+          "Course coordination support",
+          "Empathetic problem solving"
+        ]
+      },
+      {
+        "id": "gen-sec",
+        "title": "GENERAL SECRETARY",
+        "subtitle": "Executive Administration",
+        "description": "Experience in administration, communication, coordination, documentation and student leadership at the departmental and faculty level.",
+        "icon": "FileText",
+        "highlights": [
+          "Transparent student reporting",
+          "Inter-department coordination",
+          "Operational efficiency"
+        ]
+      },
+      {
+        "id": "community-building",
+        "title": "COMMUNITY BUILDING",
+        "subtitle": "Connecting Students",
+        "description": "Bringing students together around academic excellence, digital skills, mentorship and collective growth across departments.",
+        "icon": "HeartHandshake",
+        "highlights": [
+          "Collaborative study networks",
+          "Peer mentoring channels",
+          "Inclusive student engagement"
+        ]
+      },
+      {
+        "id": "digital-innovation",
+        "title": "DIGITAL & TECH PROJECTS",
+        "subtitle": "Practical Solutions",
+        "description": "Applying technology, digital tools and practical knowledge to solve real student communication and academic information gaps.",
+        "icon": "Laptop",
+        "highlights": [
+          "Information accessibility tools",
+          "Digital skill sharing",
+          "Modern student platforms"
+        ]
+      }
+    ],
+    "turningPointHeadline": "LEADERSHIP SHOULD NOT END WITH A POSITION.",
+    "turningPointIntro": "During my time serving as General Secretary and class representative, one realization changed my perspective on student leadership completely:",
+    "turningPointRealization": "Too often, student leadership focuses entirely on getting into office. Once the tenure ends, the impact ends. The manifestos are forgotten, the group chats go silent, and students are left with the same issues.",
+    "turningPointConclusion": "I realized that real leadership is not defined by whether you hold an office today. It is defined by what you leave behind for tomorrow. That is why The Auspicious Era was created — as an enduring legacy tenure.",
+    "legacyTenureHeadline": "More Than A Title. Something Students Can Actually Benefit From.",
+    "legacyTenureIntro": "The Auspicious Era is designed around five strategic pillars that directly improve student experience, career readiness, and day-to-day campus life.",
+    "legacyInitiatives": [
+      {
+        "id": "academic-support",
+        "number": "01",
+        "title": "ACADEMIC SUPPORT & CLARITY",
+        "summary": "Accessible academic information, study materials, exam prep assistance, and peer tutoring networks to ensure no student is left behind.",
+        "icon": "GraduationCap",
+        "areas": [
+          "Departmental course clarity guidelines",
+          "Peer-to-peer study circle coordination",
+          "Access to past academic question breakdowns"
+        ]
+      },
+      {
+        "id": "student-welfare",
+        "number": "02",
+        "title": "STUDENT WELFARE & ADVOCACY",
+        "summary": "Direct communication channels to report student challenges, resolve welfare concerns, and advocate for student interests effectively.",
+        "icon": "Heart",
+        "areas": [
+          "Rapid student assistance desk",
+          "Mental health & balance check-ins",
+          "Transparent representation with faculty"
+        ]
+      },
+      {
+        "id": "technology-innovation",
+        "number": "03",
+        "title": "TECHNOLOGY & DIGITAL TOOLS",
+        "summary": "Building modern digital tools, centralized resources, and online systems to make university life simpler and information readily available.",
+        "icon": "Cpu",
+        "areas": [
+          "Centralized student resource hub",
+          "Digital information broadcasts",
+          "Tech literacy workshops"
+        ]
+      },
+      {
+        "id": "skills-opportunities",
+        "number": "04",
+        "title": "SKILLS, CAREER & OPPORTUNITIES",
+        "summary": "Connecting students with high-value digital skills, internship opportunities, tech masterclasses, and freelance career paths.",
+        "icon": "Briefcase",
+        "areas": [
+          "Digital skills training programs",
+          "Internship & freelance opportunities",
+          "Career mentorship sessions"
+        ]
+      },
+      {
+        "id": "community-unity",
+        "number": "05",
+        "title": "COMMUNITY, UNITY & INCLUSION",
+        "summary": "Fostering collaboration, healthy relationships, and a vibrant community where every student feels seen, heard, and supported.",
+        "icon": "Network",
+        "areas": [
+          "Inter-level student networking mixers",
+          "Collaborative project groups",
+          "Open town-hall discussions"
+        ]
+      }
+    ],
+    "humanSideHeadline": "BECAUSE EVERY STUDENT HAS A STORY.",
+    "humanSideLines": [
+      "Behind every matric number is a student with dreams.",
+      "Behind every grade is a struggle that exams never test.",
+      "Behind every quiet face is someone trying to figure things out.",
+      "Leadership should never forget the person behind the matric number."
+    ],
+    "humanSideConclusion": "Leadership should remember the person behind the number.",
+    "values": [
+      {
+        "id": "val-clarity",
+        "title": "CLARITY",
+        "description": "Clear information, honest communication, and transparent intentions in all student matters."
+      },
+      {
+        "id": "val-service",
+        "title": "SERVICE",
+        "description": "Putting student interests first — without ego, hidden agendas, or superficial promises."
+      },
+      {
+        "id": "val-accountability",
+        "title": "ACCOUNTABILITY",
+        "description": "Taking responsibility for outcomes, being accessible to students, and honoring commitments."
+      },
+      {
+        "id": "val-innovation",
+        "title": "INNOVATION",
+        "description": "Using technology, creative thinking, and modern tools to solve enduring student problems."
+      },
+      {
+        "id": "val-opportunity",
+        "title": "OPPORTUNITY",
+        "description": "Opening doors for students to gain skills, build networks, and prepare for life after university."
+      },
+      {
+        "id": "val-community",
+        "title": "COMMUNITY",
+        "description": "Building an inclusive environment where no student feels isolated or left behind."
+      }
+    ],
+    "whyEraHeadline": "WE CANNOT CONTROL EVERYTHING ABOUT UNIVERSITY. BUT WE CAN BUILD AN ERA WE ARE PROUD OF.",
+    "whyEraParagraphs": [
+      "\"Auspicious\" means promising, favorable, and full of potential for success.",
+      "The Auspicious Era is not a political campaign. It is an intentional chapter of student life centered on clarity, meaningful service, shared growth, and lasting impact.",
+      "When students support students, when information is shared freely, and when leadership creates actual opportunities, everyone wins."
+    ],
+    "whyEraCallout": "AN ERA OF CLARITY. AN ERA OF IMPACT. AN ERA BUILT TOGETHER.",
+    "philosophyQuote": "Clarity creates direction. Direction creates progress.",
+    "philosophyAuthor": "Onifade Sulaiman (Mr. Clarity)",
+    "socials": {
+      "instagram": "https://instagram.com",
+      "tiktok": "https://tiktok.com",
+      "linkedin": "https://linkedin.com",
+      "facebook": "https://facebook.com",
+      "x": "https://x.com"
+    }
+  }
+}

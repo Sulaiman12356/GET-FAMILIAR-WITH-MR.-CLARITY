@@ -172,10 +172,10 @@ export const Footer: React.FC<FooterProps> = ({
                 <button
                   type="button"
                   onClick={onOpenCustomizer}
-                  className="inline-flex items-center gap-1.5 text-xs text-[#667085] hover:text-[#155EEF] transition-colors"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#F6F9FF] border border-[#E5E7EB] hover:border-[#155EEF] text-xs font-bold text-[#475467] hover:text-[#155EEF] transition-all shadow-2xs"
                 >
-                  <Settings2 className="w-3.5 h-3.5" />
-                  <span>Configure contact details & upload portrait</span>
+                  <Settings2 className="w-3.5 h-3.5 text-[#155EEF]" />
+                  <span>Admin Configuration (Password Protected)</span>
                 </button>
               </div>
             )}

@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
+import platformDefaultData from './data/platform-config.json';
 import { initialConfig } from './data/config';
 import { SiteConfig } from './types';
 import { Navbar } from './components/Navbar';
@@ -19,29 +20,74 @@ import { MobileBottomCTA } from './components/MobileBottomCTA';
 import { ContentCustomizerModal } from './components/ContentCustomizerModal';
 
 export default function App() {
+  // Baseline initial data from platform-config.json
+  const defaultPlatformConfig: SiteConfig = {
+    ...initialConfig,
+    ...(platformDefaultData.config as any)
+  };
+
   const [config, setConfig] = useState<SiteConfig>(() => {
     try {
       const saved = localStorage.getItem('auspicious_era_v2_config');
       if (saved) {
-        return { ...initialConfig, ...JSON.parse(saved) };
+        return { ...defaultPlatformConfig, ...JSON.parse(saved) };
       }
     } catch {
       // fallback
     }
-    return initialConfig;
+    return defaultPlatformConfig;
   });
 
   const [heroImage, setHeroImage] = useState<string>(() => {
     try {
-      return localStorage.getItem('auspicious_era_v2_hero_image') || '';
+      const local = localStorage.getItem('auspicious_era_v2_hero_image');
+      if (local) return local;
+      return platformDefaultData.heroImage || '';
     } catch {
-      return '';
+      return platformDefaultData.heroImage || '';
     }
   });
 
   const [isCustomizerOpen, setIsCustomizerOpen] = useState(false);
+  const [adminPassword, setAdminPassword] = useState<string>(platformDefaultData.adminPassword || 'clarity2026');
 
-  // Persistence
+  // CROSS-DEVICE SYNC: Fetch live configuration from server on mount
+  useEffect(() => {
+    let isMounted = true;
+
+    async function syncPlatformData() {
+      try {
+        const res = await fetch('/api/config');
+        if (res.ok) {
+          const data = await res.json();
+          if (isMounted && data) {
+            if (data.config && typeof data.config === 'object') {
+              setConfig((prev) => ({ ...prev, ...data.config }));
+              try {
+                localStorage.setItem('auspicious_era_v2_config', JSON.stringify(data.config));
+              } catch {}
+            }
+            if (data.heroImage !== undefined) {
+              setHeroImage(data.heroImage);
+              try {
+                localStorage.setItem('auspicious_era_v2_hero_image', data.heroImage);
+              } catch {}
+            }
+          }
+        }
+      } catch (err) {
+        console.info('Using bundled/cached configuration (standalone mode)', err);
+      }
+    }
+
+    syncPlatformData();
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  // Sync to localStorage for instant subsequent loads
   useEffect(() => {
     try {
       localStorage.setItem('auspicious_era_v2_config', JSON.stringify(config));
@@ -58,12 +104,62 @@ export default function App() {
     }
   }, [heroImage]);
 
-  const handleSaveConfig = (updated: SiteConfig) => {
-    setConfig(updated);
-  };
+  // Save to platform server and synchronize across all devices
+  const handleSaveConfig = useCallback(async (updated: SiteConfig, newPassword?: string): Promise<boolean> => {
+    try {
+      // Broadcast to platform API
+      const res = await fetch('/api/config', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          password: adminPassword,
+          config: updated,
+          heroImage,
+          newPassword: newPassword || undefined
+        }),
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        if (data.config) {
+          setConfig(data.config);
+        } else {
+          setConfig(updated);
+        }
+        if (newPassword) {
+          setAdminPassword(newPassword);
+        }
+        return true;
+      } else {
+        // If server returns error, still apply locally
+        setConfig(updated);
+        return true;
+      }
+    } catch (e) {
+      console.warn('Server unavailable, persisting locally', e);
+      setConfig(updated);
+      return true;
+    }
+  }, [adminPassword, heroImage]);
+
+  const handleUpdateHeroImage = useCallback(async (newImage: string) => {
+    setHeroImage(newImage);
+    try {
+      await fetch('/api/config', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          password: adminPassword,
+          heroImage: newImage
+        }),
+      });
+    } catch (e) {
+      console.warn('Could not sync image to server', e);
+    }
+  }, [adminPassword]);
 
   const handleResetDefaults = () => {
-    setConfig(initialConfig);
+    setConfig(defaultPlatformConfig);
     setHeroImage('');
     localStorage.removeItem('auspicious_era_v2_config');
     localStorage.removeItem('auspicious_era_v2_hero_image');
@@ -165,7 +261,7 @@ export default function App() {
         whatsAppNumber={config.whatsAppNumber}
       />
 
-      {/* 24 — Configuration & Media Modal */}
+      {/* 24 — Configuration & Media Modal (Password Protected, Cross-Device Sync) */}
       <ContentCustomizerModal
         isOpen={isCustomizerOpen}
         onClose={() => setIsCustomizerOpen(false)}
@@ -173,7 +269,8 @@ export default function App() {
         onSaveConfig={handleSaveConfig}
         onResetDefaults={handleResetDefaults}
         heroImage={heroImage}
-        onUpdateHeroImage={(img) => setHeroImage(img)}
+        onUpdateHeroImage={handleUpdateHeroImage}
+        adminPassword={adminPassword}
       />
 
     </div>

@@ -27,9 +27,9 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   const navLinks = [
     { name: 'Home', href: '#hero' },
-    { name: 'About Me', href: '#about' },
+    { name: 'About Mr. Clarity', href: '#about' },
     { name: 'My Journey', href: '#journey' },
-    { name: 'Legacy Tenure', href: '#legacy' },
+    { name: 'The Legacy Tenure', href: '#legacy', isHighlight: true },
     { name: 'My Values', href: '#values' },
   ];
 
@@ -48,24 +48,33 @@ export const Navbar: React.FC<NavbarProps> = ({
           
           {/* Left: Minimal Wordmark / Logo */}
           <a href="#hero" className="flex items-center gap-3 group focus:outline-none">
-            <BrandLogo className="w-9 h-9" />
+            <BrandLogo className="w-10 h-10 shrink-0" />
             <div className="flex flex-col">
-              <span className="font-display font-extrabold text-[#0B1F3A] tracking-wider text-sm sm:text-base group-hover:text-[#155EEF] transition-colors leading-tight">
+              <span className="font-display font-black text-[#0B1F3A] tracking-wider text-sm sm:text-base group-hover:text-[#155EEF] transition-colors leading-tight">
                 {brandName}
               </span>
-              <span className="text-[11px] font-semibold text-[#667085] tracking-widest uppercase">
-                {name}
-              </span>
+              <div className="flex items-center gap-1.5 flex-wrap">
+                <span className="text-xs sm:text-sm font-black text-[#155EEF] tracking-wide">
+                  MR. CLARITY
+                </span>
+                <span className="text-[11px] font-bold text-[#667085]">
+                  • {name}
+                </span>
+              </div>
             </div>
           </a>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-7 lg:gap-8">
+          <nav className="hidden md:flex items-center gap-6 lg:gap-7">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="text-sm font-medium text-[#111827] hover:text-[#155EEF] transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-[#155EEF] hover:after:w-full after:transition-all"
+                className={`text-sm transition-colors py-1 relative ${
+                  link.isHighlight
+                    ? 'font-extrabold text-[#155EEF] bg-[#EAF2FF] px-3 py-1.5 rounded-lg hover:bg-[#D5E5FF]'
+                    : 'font-semibold text-[#111827] hover:text-[#155EEF]'
+                }`}
               >
                 {link.name}
               </a>
@@ -109,7 +118,11 @@ export const Navbar: React.FC<NavbarProps> = ({
                 key={link.name}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="px-3 py-2.5 rounded-lg text-sm font-medium text-[#111827] hover:bg-[#F6F9FF] hover:text-[#155EEF] transition-colors"
+                className={`px-3 py-2.5 rounded-lg text-sm transition-colors ${
+                  link.isHighlight 
+                    ? 'bg-[#EAF2FF] text-[#155EEF] font-extrabold' 
+                    : 'font-semibold text-[#111827] hover:bg-[#F6F9FF] hover:text-[#155EEF]'
+                }`}
               >
                 {link.name}
               </a>

@@ -51,17 +51,18 @@ export const LegacyTenure: React.FC<LegacyTenureProps> = ({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
-        <div className="max-w-3xl mb-14 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#EAF2FF] text-[#155EEF] mb-3">
+        <div className="max-w-4xl mb-14 sm:mb-16">
+          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full text-xs sm:text-sm font-black uppercase tracking-widest bg-[#155EEF] text-white shadow-xs mb-4">
+            <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
             <span>THE LEGACY TENURE</span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight font-display text-[#0B1F3A] leading-tight">
-            More Than A Title. <br />
-            <span className="text-[#155EEF]">Something Students Can Actually Benefit From.</span>
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight font-display text-[#0B1F3A] leading-[1.08]">
+            THE LEGACY TENURE. <br />
+            <span className="text-[#155EEF]">More Than A Title — Real Student Impact.</span>
           </h2>
 
-          <p className="mt-4 text-base sm:text-lg text-[#667085] leading-relaxed">
+          <p className="mt-4 text-base sm:text-lg font-medium text-[#475467] leading-relaxed">
             {intro}
           </p>
         </div>

@@ -29,16 +29,19 @@ export const Hero: React.FC<HeroProps> = ({
           {/* Left Column: Text & CTAs */}
           <div className="lg:col-span-7 space-y-7">
             
-            {/* Hero Label & Accent line */}
-            <div className="flex items-center gap-3">
-              <span className="w-8 h-[2px] bg-[#155EEF] rounded-full" />
-              <span className="text-xs sm:text-sm font-bold uppercase tracking-widest text-[#155EEF]">
+            {/* Hero Label & Prominent Moniker Banner */}
+            <div className="flex flex-wrap items-center gap-3">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EAF2FF] border border-[#155EEF]/30 text-xs sm:text-sm font-extrabold tracking-wide text-[#155EEF] shadow-xs">
+                <span className="w-2 h-2 rounded-full bg-[#155EEF] animate-pulse" />
+                <span>ONIFADE SULAIMAN • POPULARLY KNOWN AS <span className="font-black underline decoration-2 underline-offset-2">MR. CLARITY</span></span>
+              </div>
+              <span className="text-xs font-bold uppercase tracking-widest text-[#667085] hidden sm:inline">
                 {config.brand}
               </span>
             </div>
 
             {/* Main Headline */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight font-display text-[#0B1F3A] leading-[1.08]">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight font-display text-[#0B1F3A] leading-[1.08]">
               {config.heroHeadlineTop} <br />
               <span className="text-[#155EEF]">
                 {config.heroHeadlineHighlight}
@@ -47,7 +50,7 @@ export const Hero: React.FC<HeroProps> = ({
 
             {/* Paragraph 1 */}
             <p className="text-base sm:text-lg text-[#111827] leading-relaxed max-w-2xl font-normal">
-              {config.heroBio1}
+              My name is <strong className="font-bold text-[#0B1F3A]">{config.name}</strong>, popularly and widely known as <strong className="font-black text-[#155EEF] bg-[#EAF2FF] px-1.5 py-0.5 rounded text-lg">MR. CLARITY</strong>. I am a Computer Science student, student leader, digital strategist and community builder passionate about helping students find clarity, discover opportunities and create meaningful progress.
             </p>
 
             {/* Paragraph 2 */}
@@ -56,24 +59,33 @@ export const Hero: React.FC<HeroProps> = ({
             </p>
 
             {/* CTAs */}
-            <div className="pt-2 space-y-3">
-              <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+            <div className="pt-2 space-y-4">
+              <div className="flex flex-col sm:flex-row sm:items-center gap-3.5 flex-wrap">
                 <a
                   href={whatsAppUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-xl bg-[#155EEF] hover:bg-[#1048B5] text-white font-bold text-sm tracking-wide shadow-sm hover:shadow-md transition-all active:scale-[0.98] group"
+                  className="inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-xl bg-[#155EEF] hover:bg-[#1048B5] text-white font-black text-sm tracking-wide shadow-md hover:shadow-lg transition-all active:scale-[0.98] group"
                 >
                   <MessageSquare className="w-4 h-4 fill-white/20" />
                   <span>JOIN THE MOVEMENT</span>
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </a>
 
+                {/* Bold prominent Legacy Tenure button */}
+                <a
+                  href="#legacy"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-[#F6F9FF] border-2 border-[#155EEF]/30 hover:border-[#155EEF] hover:bg-[#EAF2FF] text-[#0B1F3A] hover:text-[#155EEF] font-black text-sm tracking-wide transition-all shadow-xs group"
+                >
+                  <span>EXPLORE THE LEGACY TENURE</span>
+                  <ArrowRight className="w-4 h-4 text-[#155EEF] group-hover:translate-x-1 transition-transform" />
+                </a>
+
                 <a
                   href="#about"
-                  className="inline-flex items-center justify-center gap-1.5 px-4 py-3 text-sm font-semibold text-[#0B1F3A] hover:text-[#155EEF] transition-colors"
+                  className="inline-flex items-center justify-center gap-1.5 px-3 py-3 text-xs sm:text-sm font-bold text-[#667085] hover:text-[#155EEF] transition-colors"
                 >
-                  <span>Discover My Story</span>
+                  <span>My Story</span>
                   <ChevronDown className="w-4 h-4" />
                 </a>
               </div>

@@ -19,13 +19,13 @@ export const WhoIsMrClarity: React.FC<WhoIsMrClarityProps> = ({ config }) => {
         
         {/* Section Header */}
         <div className="max-w-3xl mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#EAF2FF] text-[#155EEF] mb-3">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-[#EAF2FF] text-[#155EEF] mb-3">
             <span>BEYOND THE NAME</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight font-display text-[#0B1F3A]">
-            Who Is Mr. Clarity?
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight font-display text-[#0B1F3A]">
+            Who Is <span className="text-[#155EEF] underline decoration-[#155EEF]/30 underline-offset-4">MR. CLARITY?</span>
           </h2>
-          <p className="mt-3 text-lg font-medium text-[#155EEF]">
+          <p className="mt-3 text-lg font-bold text-[#155EEF]">
             {config.beyondNameSubtitle}
           </p>
         </div>
@@ -72,14 +72,14 @@ export const WhoIsMrClarity: React.FC<WhoIsMrClarityProps> = ({ config }) => {
               
               <div className="flex items-start justify-between">
                 <div>
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-[#667085]">
-                    STUDENT LEADER PROFILE
-                  </span>
-                  <h3 className="font-display font-black text-2xl text-[#0B1F3A] mt-1">
+                  <div className="inline-block px-2.5 py-1 rounded-md bg-[#155EEF] text-white text-xs font-black tracking-widest uppercase mb-2">
+                    MR. CLARITY
+                  </div>
+                  <h3 className="font-display font-black text-2xl text-[#0B1F3A]">
                     {config.name}
                   </h3>
-                  <p className="text-sm font-bold text-[#155EEF] mt-0.5">
-                    Popularly known as {config.nickname}
+                  <p className="text-xs font-bold uppercase tracking-wider text-[#667085] mt-1">
+                    STUDENT LEADER & DIGITAL STRATEGIST
                   </p>
                 </div>
                 <div className="w-12 h-12 rounded-xl bg-[#EAF2FF] text-[#155EEF] flex items-center justify-center font-bold">
